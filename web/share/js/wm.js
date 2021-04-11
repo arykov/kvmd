@@ -212,6 +212,10 @@ function __WindowManager() {
 		}
 	};
 
+	self.maximizeWindow = function(el_window){
+		__maximizeWindow(el_window);
+	};
+	
 	self.showWindow = function(el_window, activate=true, center=false) {
 		let showed = false;
 		if (el_window.style.visibility === "hidden") {
@@ -515,7 +519,7 @@ function __WindowManager() {
 			}
 		}
 	};
-
+	
 	var __maximizeWindow = function(el_window) {
 		let vertical_offset = $("navbar").offsetHeight;
 		el_window.style.left = "0px";

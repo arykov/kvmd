@@ -114,6 +114,16 @@ export function Streamer() {
 			let resolution_str = __makeStringResolution(state.streamer.source.resolution);
 			if (__makeStringResolution(__resolution) != resolution_str) {
 				__resolution = state.streamer.source.resolution;
+				//some better way tools.is_ios is not working
+				if(!document.fullscreenElement){
+					var bounding = $("stream-window").getBoundingClientRect();
+					if( bounding.top <0 || 
+						bounding.left <0 || 
+						bounding.bottom > (window.innerHeight || document.documentElement.clientHeight) || 
+						bounding.right > (window.innerWidth || document.documentElement.clientWidth)){
+							wm.maximizeWindow($("stream-window"));
+						}					
+				}				
 			}
 
 			if (state.features.resolution) {
