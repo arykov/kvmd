@@ -270,7 +270,16 @@ export function Streamer() {
 		});
 	};
 
+	var __setStyleDimensions = function(el_window){
+		if(el_window.style.width === ""){
+			el_window.style.width = el_window.offsetWidth+"px";
+			el_window.style.width = el_window.offsetWidth+"px";
+		}
+	};
+
 	var __resize = function() {
+		//to work around the problem with dragging windows
+		__setStyleDimensions($("stream-window"));
 		let rect = $("stream-image").getBoundingClientRect();
 		let width = $("stream-image").naturalWidth;
 		let height = $("stream-image").naturalHeight;
